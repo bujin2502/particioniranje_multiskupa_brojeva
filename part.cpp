@@ -9,7 +9,7 @@ void printPartition(const vector<int>& multiset, vector<vector<int>>& ans)
     for (size_t i = 0; i < ans.size(); ++i) {
         cout << "{ ";
         for (size_t j = 0; j < ans[i].size(); ++j) {
-            cout << multiset[ans[i][j]];
+            cout << ans[i][j];
             if (j < ans[i].size() - 1) {
                 cout << ",";
             }
@@ -49,7 +49,7 @@ void allPartitions(const vector<int>& multiset)
 
 int main()
 {
-    vector<int> multiset = {1, 1, 3};
+    vector<int> multiset = {1, 1, 3, 4, 9, 9, 10};
     allPartitions(multiset);
     return 0;
 }
