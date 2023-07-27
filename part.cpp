@@ -3,8 +3,11 @@
 
 using namespace std;
 
+int lineCounter = 1;
+
 void printPartition(const vector<int>& multiset, vector<vector<int>>& ans)
 {
+    cout << "Particija " << lineCounter << ": ";
     cout << "(";
     for (size_t i = 0; i < ans.size(); ++i) {
         cout << "{ ";
@@ -20,6 +23,7 @@ void printPartition(const vector<int>& multiset, vector<vector<int>>& ans)
         }
     }
     cout << ")" << endl;
+    lineCounter++;
 }
 
 void Partition(const vector<int>& multiset, int index, vector<vector<int>>& ans)
@@ -49,7 +53,7 @@ void allPartitions(const vector<int>& multiset)
 
 int main()
 {
-    vector<int> multiset = {1, 1, 3, 4, 9, 9, 10};
+    vector<int> multiset = {1, 4, 9, 9, 10};
     allPartitions(multiset);
     return 0;
 }
