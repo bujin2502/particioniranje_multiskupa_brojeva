@@ -3,11 +3,11 @@
 
 using namespace std;
 
-int lineCounter = 1;
+int brojacLinija = 1;
 
-void printPartition(const vector<int>& multiset, vector<vector<int>>& ans)
+void prikazParticija(const vector<int>& multiskup, vector<vector<int>>& ans)
 {
-    cout << "Particija " << lineCounter << ": ";
+    cout << "Particija " << brojacLinija << ": ";
     cout << "(";
     for (size_t i = 0; i < ans.size(); ++i) {
         cout << "{ ";
@@ -23,37 +23,37 @@ void printPartition(const vector<int>& multiset, vector<vector<int>>& ans)
         }
     }
     cout << ")" << endl;
-    lineCounter++;
+    brojacLinija++;
 }
 
-void Partition(const vector<int>& multiset, int index, vector<vector<int>>& ans)
+void Particija(const vector<int>& multiskup, int index, vector<vector<int>>& ans)
 {
-    if (index == multiset.size()) {
-        printPartition(multiset, ans);
+    if (index == multiskup.size()) {
+        prikazParticija(multiskup, ans);
         return;
     }
 
-    vector<int> newBlock = { multiset[index] };
-    ans.push_back(newBlock);
-    Partition(multiset, index + 1, ans);
+    vector<int> noviBlok = { multiskup[index] };
+    ans.push_back(noviBlok);
+    Particija(multiskup, index + 1, ans);
     ans.pop_back();
 
     for (int i = 0; i < ans.size(); i++) {
-        ans[i].push_back(multiset[index]);
-        Partition(multiset, index + 1, ans);
+        ans[i].push_back(multiskup[index]);
+        Particija(multiskup, index + 1, ans);
         ans[i].pop_back();
     }
 }
 
-void allPartitions(const vector<int>& multiset)
+void sveParticije(const vector<int>& multiskup)
 {
     vector<vector<int>> v;
-    Partition(multiset, 0, v);
+    Particija(multiskup, 0, v);
 }
 
 int main()
 {
-    vector<int> multiset = {1, 4, 9, 9, 10};
-    allPartitions(multiset);
+    vector<int> multiskup = {1, 4, 9, 9, 10};
+    sveParticije(multiskup);
     return 0;
 }
